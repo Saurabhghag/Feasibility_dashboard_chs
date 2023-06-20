@@ -1,0 +1,84 @@
+
+  
+/**
+ * Company Name - Canberra Health Services
+ * Project Name: Feasibility Modelling for Clinical Trials
+ * Author: Saurabh Vilas Ghag
+ * Version: 1.0.0
+ * Date: 23 May 2023
+ */
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .form-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    position: relative;
+  }
+  
+  .form-column:last-child {
+    margin-right: 0;
+  }
+  
+  .form-column label::after {
+    content: ' *';
+    color: red;
+  }
+  
+  .form-column input {
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-column input:focus {
+    outline: none;
+    border-color: #4da6ff;
+  }
+  
+  .form-column input:required {
+    border-left: 4px solid white;
+  }
+  
+  .form-column input:invalid:required {
+    border-left: 4px solid red;
+  }
+  
+  .form-column input:valid:required {
+    border-left: 4px solid #4da6ff;
+  }
+  
+  .form-column input:focus:required {
+    border-left: 4px solid #4da6ff;
+  }
+  
+  .dropdown-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    position: relative;
+  }
+  
+  .dropdown-column:last-child {
+    margin-right: 0;
+  }
+  .form-container {
+    max-height: 730px; 
+    overflow-y: scroll;
+    scroll-behavior: smooth
+  }
+  
+  .big-dashboard {
+    font-size: 30px;
+    font-weight: bold;
+    color: #0a0a0a;
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  
+  
+
+  

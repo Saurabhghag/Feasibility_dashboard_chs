@@ -1,0 +1,172 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh17440\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 View Name: feasibility_dashboard_view\
+\
+\
+DDL:\
+\
+CREATE \
+    ALGORITHM = UNDEFINED \
+    DEFINER = `root`@`localhost` \
+    SQL SECURITY DEFINER\
+VIEW `feasibility_db`.`feasibility_dashboard_view` AS\
+    SELECT \
+        `pd`.`project_id` AS `project_id`,\
+        `pd`.`study_title` AS `study_title`,\
+        `pd`.`protocol_number` AS `protocol_number`,\
+        `pd`.`unit_name` AS `unit_name`,\
+        `pd`.`principal_investigator` AS `principal_investigator`,\
+        `pd`.`study_coordinator` AS `study_coordinator`,\
+        `pd`.`study_duration` AS `study_duration`,\
+        `pd`.`funding_source` AS `funding_source`,\
+        `pa`.`testing_lab` AS `testing_lab`,\
+        `pa`.`protocol_handbook` AS `protocol_handbook_pathology`,\
+        `pa`.`lab_manual` AS `lab_manual`,\
+        `pa`.`testing_confirmation` AS `testing_confirmation`,\
+        `pa`.`storage_space` AS `storage_space`,\
+        `pa`.`accountability_shipping` AS `accountability_shipping`,\
+        ((((SUM((CASE\
+            WHEN (`pa`.`protocol_handbook` = 'Available') THEN 1\
+            ELSE 0\
+        END)) + SUM((CASE\
+            WHEN (`pa`.`lab_manual` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`pa`.`testing_confirmation` = 'Yes') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`pa`.`storage_space` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`pa`.`accountability_shipping` = 'Yes') THEN 1\
+            ELSE 0\
+        END))) AS `Pathology_Low_risk_cnt`,\
+        SUM((CASE\
+            WHEN (`pa`.`storage_space` = 'can be Managed') THEN 1\
+            ELSE 0\
+        END)) AS `Pathology_mod_risk_cnt`,\
+        ((((SUM((CASE\
+            WHEN (`pa`.`protocol_handbook` = 'Not Available') THEN 1\
+            ELSE 0\
+        END)) + SUM((CASE\
+            WHEN (`pa`.`lab_manual` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`pa`.`testing_confirmation` = 'No') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`pa`.`storage_space` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`pa`.`accountability_shipping` = 'No') THEN 1\
+            ELSE 0\
+        END))) AS `Pathology_high_risk_cnt`,\
+        `ph`.`standard_of_care` AS `standard_of_care`,\
+        `ph`.`non_standard_of_care` AS `non_standard_of_care`,\
+        `ph`.`protocol_handbook` AS `protocol_handbook_pharmacy`,\
+        `ph`.`pharmacy_manual` AS `pharmacy_manual`,\
+        `ph`.`inventory_drug_control` AS `inventory_drug_control`,\
+        `ph`.`accountability` AS `accountability`,\
+        `ph`.`close_out_management_onsite` AS `close_out_management_onsite`,\
+        `ph`.`close_out_management_shipping` AS `close_out_management_shipping`,\
+        `ph`.`storage_equipment` AS `storage_equipment`,\
+        `ph`.`special_equipment` AS `special_equipment`,\
+        `ph`.`StorageEquipment` AS `StorageEquipment`,\
+        `ph`.`specialequipment` AS `specialequipment`,\
+        (((((((((SUM((CASE\
+            WHEN (`ph`.`protocol_handbook` = 'Available') THEN 1\
+            ELSE 0\
+        END)) + SUM((CASE\
+            WHEN (`ph`.`pharmacy_manual` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`inventory_drug_control` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`accountability` = 'Yes') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`close_out_management_onsite` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`close_out_management_shipping` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`storage_equipment` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`special_equipment` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`StorageEquipment` = 'Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`specialequipment` = 'Available') THEN 1\
+            ELSE 0\
+        END))) AS `Pharmacy_Low_risk_cnt`,\
+        (((((((((SUM((CASE\
+            WHEN (`ph`.`protocol_handbook` = 'Not Available') THEN 1\
+            ELSE 0\
+        END)) + SUM((CASE\
+            WHEN (`ph`.`pharmacy_manual` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`inventory_drug_control` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`accountability` = 'No') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`close_out_management_onsite` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`close_out_management_shipping` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`storage_equipment` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`special_equipment` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`StorageEquipment` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`specialequipment` = 'Not Available') THEN 1\
+            ELSE 0\
+        END))) AS `Pharmacy_high_risk_cnt`,\
+        (((SUM((CASE\
+            WHEN (`ph`.`storage_equipment` = 'Can be Managed') THEN 1\
+            ELSE 0\
+        END)) + SUM((CASE\
+            WHEN (`ph`.`special_equipment` = 'Can be Managed') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`StorageEquipment` = 'Can be Managed') THEN 1\
+            ELSE 0\
+        END))) + SUM((CASE\
+            WHEN (`ph`.`specialequipment` = 'Can be Managed') THEN 1\
+            ELSE 0\
+        END))) AS `Pharmacy_mod_risk_cnt`\
+    FROM\
+        ((`feasibility_db`.`project_details` `pd`\
+        JOIN `feasibility_db`.`pathology_startup` `pa` ON ((`pd`.`project_id` = `pa`.`project_id`)))\
+        JOIN `feasibility_db`.`pharmacy_startup` `ph` ON ((`pd`.`project_id` = `ph`.`project_id`)))\
+    GROUP BY `pd`.`project_id` , `pd`.`study_title` , `pd`.`protocol_number` , `pd`.`unit_name` , `pd`.`principal_investigator` , `pd`.`study_coordinator` , `pd`.`study_duration` , `pd`.`funding_source` , `pa`.`testing_lab` , `pa`.`protocol_handbook` , `pa`.`lab_manual` , `pa`.`testing_confirmation` , `pa`.`storage_space` , `pa`.`accountability_shipping` , `ph`.`standard_of_care` , `ph`.`non_standard_of_care` , `ph`.`protocol_handbook` , `ph`.`pharmacy_manual` , `ph`.`inventory_drug_control` , `ph`.`accountability` , `ph`.`close_out_management_onsite` , `ph`.`close_out_management_shipping` , `ph`.`storage_equipment` , `ph`.`special_equipment` , `ph`.`StorageEquipment` , `ph`.`specialequipment`;\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}

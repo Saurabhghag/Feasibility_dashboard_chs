@@ -1,0 +1,41 @@
+/**
+ * Company Name - Canberra Health Services
+ * Project Name: Feasibility Modelling for Clinical Trials
+ * Author: Saurabh Vilas Ghag
+ * Version: 1.0.0
+ * Date: 23 May 2023
+ */
+  
+/**
+ * The container class for the home page.
+ *
+ * This class represents the overall styling of the home page container.
+ * It sets the font family to Roboto, applies a linear gradient background color,
+ * and centers its contents vertically and horizontally.
+ */
+
+.home {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #e6f4ff, #b3d9ff, #80bfff, #4da6ff, #1a8cff);
+     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /**
+ * The main content container class.
+ *
+ * This class represents the main content container within the home page.
+ * It uses grid layout to arrange its child elements, sets a background color,
+ * and applies a border radius and overflow properties.
+ */
+  .home-page{
+    display: grid;
+    height: 97%;
+    width: 97%;
+    border-radius: 2rem;
+    background-color: #f7fbff;
+    overflow: hidden;
+    grid-template-columns: 13rem auto;
+  }
+  

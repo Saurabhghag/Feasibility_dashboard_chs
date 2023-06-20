@@ -1,0 +1,110 @@
+
+/**
+ * Company Name - Canberra Health Services
+ * Project Name: Feasibility Modelling for Clinical Trials
+ * Author: Saurabh Vilas Ghag
+ * Version: 1.0.0
+ * Date: 23 May 2023
+ */
+.OriginalCard{
+    /* display: flex;   */
+     /* flex:1; */
+    height: 15rem;
+    border-radius: 0.7rem;
+    color:white;
+    padding: 5px;
+    position: relative;
+    cursor: pointer; 
+}  
+ 
+.OriginalCard:hover{
+    box-shadow: none;
+} 
+
+
+.ExpandedCard{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.form-container {
+    border: 1.5px solid black;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .form-border{
+    border: 1.5px solid black;
+    /* padding: 10px; */
+    margin: 10px;
+  }
+  .form-row {
+    border: 1.5px solid black;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .form-row > * {
+    margin: 5px;
+  }
+
+  /* .form-row span {
+    font-weight: bold;
+  } */
+  .small {
+    font-size: 8px;
+    color: rgb(65, 62, 62);
+    font-weight: bold;
+  }
+  
+  /* .small span {
+    color: black;
+  } */
+
+   .big {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0a0a0a;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .med {
+    font-size: 14px;
+    font-weight: bold;
+    color: #0a0a0a;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .ExpandedCard{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-height: 400px; 
+    overflow-y: scroll;
+    scroll-behavior: smooth
+}
+  .form-container-card{
+    border: 1.5px solid black;
+    max-height: 400px; 
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    margin: 10px;
+  }
+  /* .status {
+    /* Default color */
+    /* color: #E74C3C; */
+  /* } */
+/*   
+  .available {
+    /* Color when the value is Available or Yes */
+    /* color: green; */
+  /* } */ 
+  
+  /* .can-be-managed { */
+    /* Color when the value is Can be Managed */
+    /* color: #F39C12; */
+  /* } */
+   /* */ 
+  
